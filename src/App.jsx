@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import XPBar from './components/XPBar'
 import QuizCard from './components/QuizCard'
 import CompletionScreen from './components/CompletionScreen'
 import LanguageSelect from './components/LanguageSelect'
+import LevelUpBanner from './components/LevelUpBanner'
 import questionSets from './data/questions'
+import { getLevel } from './utils/leveling'
 import './App.css'
 
 const XP_PER_CORRECT_ANSWER = 10
 const NEXT_QUESTION_DELAY = 800
+const LEVEL_UP_BANNER_DURATION = 1800
 const XP_STORAGE_KEY = 'not-duolingo:xp'
 
 function getStoredXp() {
@@ -25,6 +28,8 @@ function App() {
   const [selected, setSelected] = useState(null)
   const [correctCount, setCorrectCount] = useState(0)
   const [isFinished, setIsFinished] = useState(false)
+  const [levelUpLevel, setLevelUpLevel] = useState(null)
+  const previousLevelRef = useRef(getLevel(xp))
 
   useEffect(() => {
     try {
@@ -32,6 +37,15 @@ function App() {
     } catch {
       // ignore write failures (e.g. private browsing)
     }
+
+    const newLevel = getLevel(xp)
+    if (newLevel > previousLevelRef.current) {
+      setLevelUpLevel(newLevel)
+      const timeoutId = setTimeout(() => setLevelUpLevel(null), LEVEL_UP_BANNER_DURATION)
+      previousLevelRef.current = newLevel
+      return () => clearTimeout(timeoutId)
+    }
+    previousLevelRef.current = newLevel
   }, [xp])
 
   const questions = selectedLanguage ? questionSets[selectedLanguage].questions : null
@@ -94,6 +108,7 @@ function App() {
           onSelect={handleSelect}
         />
       )}
+      {levelUpLevel !== null && <LevelUpBanner level={levelUpLevel} />}
     </div>
   )
 }

@@ -1,7 +1,7 @@
-const XP_PER_LEVEL = 50
+import { XP_PER_LEVEL, getLevel } from '../utils/leveling'
 
 function XPBar({ xp }) {
-  const level = Math.floor(xp / XP_PER_LEVEL) + 1
+  const level = getLevel(xp)
   const progress = xp % XP_PER_LEVEL
 
   return (
