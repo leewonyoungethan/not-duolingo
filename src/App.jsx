@@ -106,6 +106,8 @@ function App() {
           question={currentQuestion}
           selected={selected}
           onSelect={handleSelect}
+          questionNumber={currentIndex + 1}
+          totalQuestions={questions.length}
         />
       )}
       {levelUpLevel !== null && <LevelUpBanner level={levelUpLevel} />}
