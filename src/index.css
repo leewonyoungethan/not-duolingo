@@ -12,6 +12,10 @@
   --danger: #ff4b4b;
   --danger-bg: rgba(255, 75, 75, 0.12);
   --gold: #ffc800;
+  --blue: #1cb0f6;
+  --blue-dark: #1899d6;
+  --blue-bg: rgba(28, 176, 246, 0.12);
+  --blue-border: rgba(28, 176, 246, 0.6);
 
   --sans: 'Baloo 2', 'Noto Sans KR', system-ui, 'Segoe UI', Roboto, sans-serif;
   --display: 'Baloo 2', 'Noto Sans KR', system-ui, sans-serif;
@@ -40,6 +44,10 @@
     --accent-border: rgba(123, 216, 63, 0.5);
     --danger: #ff6b6b;
     --danger-bg: rgba(255, 107, 107, 0.15);
+    --blue: #4fc3f7;
+    --blue-dark: #29b6f6;
+    --blue-bg: rgba(79, 195, 247, 0.18);
+    --blue-border: rgba(79, 195, 247, 0.6);
   }
 }
 
