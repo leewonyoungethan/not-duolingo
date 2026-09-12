@@ -89,3 +89,30 @@
   border-color: #ff4b4b;
   background: rgba(255, 75, 75, 0.15);
 }
+
+.completion-screen {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.completion-screen__title {
+  margin: 0 0 8px;
+}
+
+.completion-screen__score {
+  color: var(--text);
+  margin: 0 0 24px;
+}
+
+.completion-screen__restart {
+  font: inherit;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
